@@ -12,15 +12,9 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    Application mApp;
-
-    public AppModule(Application application) {
-        this.mApp = application;
-    }
-
-    @Provides
     @Singleton
-    public SharedPreferences provideSharedPreferences() {
-        return PreferenceManager.getDefaultSharedPreferences(mApp);
+    @Provides
+    public SharedPreferences provideSharedPreferences(Application application) {
+        return PreferenceManager.getDefaultSharedPreferences(application);
     }
 }

@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 import dagger.Lazy;
 import dagger.android.DaggerActivity_MembersInjector;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainPresenter.View {
 
     @Inject
     SharedPreferences sharedPreferences;
@@ -23,13 +23,27 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.button)
     Button button;
 
+    MainPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        ((MyApp) getApplication()).getComponents().inject(this);
 
-        sharedPreferences.edit().putString("greeting", "hello").apply();
+        sharedPreferences.edit().putString("greeting", "hi").apply();
+
+        String greeting = sharedPreferences.getString("greeting", "fu");
+        textView.setText(greeting);
+
+        presenter = new MainPresenterImpl(this);
+        presenter.initData();
+    }
+
+    @Override
+    public void setItemData(String data) {
+        textView.setText(data);
     }
 }

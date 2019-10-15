@@ -10,9 +10,7 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        mAppComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
-                .build();
+        mAppComponent = DaggerAppComponent.builder().application(this).build();
     }
 
     public AppComponent getComponents() {
