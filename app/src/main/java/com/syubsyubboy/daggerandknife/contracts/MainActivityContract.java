@@ -2,25 +2,25 @@ package com.syubsyubboy.daggerandknife.contracts;
 
 import android.support.annotation.NonNull;
 
+import com.syubsyubboy.daggerandknife.entities.NewsResult;
+import com.syubsyubboy.daggerandknife.repository.NewsResultRepository;
+
+import java.util.List;
+
 public interface MainActivityContract {
     abstract class Presenter {
 
         protected View view;
+        protected NewsResultRepository repository;
 
         public Presenter(View view) {
-            setView(view);
-        }
-
-        public void setView(@NonNull View view) {
             this.view = view;
         }
 
-        public abstract void initData();
-
-        public abstract void setData(String data);
+        public abstract void searchNews(String query);
     }
 
     interface View {
-        void onDataChanged(String data);
+        void onNewsResultUpdated(List<NewsResult> results);
     }
 }

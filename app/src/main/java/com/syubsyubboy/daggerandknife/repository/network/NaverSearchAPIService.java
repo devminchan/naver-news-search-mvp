@@ -7,7 +7,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Query;
 
 public interface NaverSearchAPIService {
-    @GET("news.json")
+    @GET("search/news.json")
     Single<SearchNewsResponse> search(
             @Header("X-Naver-Client-Id") String clientId,
             @Header("X-Naver-Client-Secret") String secret,

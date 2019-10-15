@@ -1,28 +1,38 @@
 package com.syubsyubboy.daggerandknife.contracts;
 
 import android.content.SharedPreferences;
+import android.util.Log;
+
+import com.syubsyubboy.daggerandknife.entities.NewsResult;
+import com.syubsyubboy.daggerandknife.repository.NewsResultRepository;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.functions.Consumer;
+
 public class MainActivityPresenterImpl extends MainActivityContract.Presenter {
 
-    SharedPreferences sharedPreferences;
+    private final String TAG = "MainActivityPresenter";
+
+    NewsResultRepository resultRepository;
 
     @Inject
-    public MainActivityPresenterImpl(MainActivityContract.View view, SharedPreferences pref) {
+    public MainActivityPresenterImpl(MainActivityContract.View view, NewsResultRepository repository) {
         super(view);
-        this.sharedPreferences = pref;
+        this.resultRepository = repository;
     }
 
     @Override
-    public void initData() {
-        this.view.onDataChanged(sharedPreferences.getString("data", ""));
-    }
-
-    @Override
-    public void setData(String data) {
-        sharedPreferences.edit().putString("data", data).apply();
-        this.view.onDataChanged(data);
+    public void searchNews(String query) {
+        resultRepository.getNews(query)
+                .subscribe(view::onNewsResultUpdated,
+                        throwable -> {
+                            Log.e(TAG, throwable.toString());
+                        }, () -> {
+                            Log.d(TAG, "Complete search news task");
+                        });
     }
 
 }

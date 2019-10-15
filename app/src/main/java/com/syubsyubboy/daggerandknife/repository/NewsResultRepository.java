@@ -7,5 +7,5 @@ import java.util.List;
 import io.reactivex.Flowable;
 
 public interface NewsResultRepository {
-    Flowable<List<NewsResult>> getArticles(String query);
+    Flowable<List<NewsResult>> getNews(String query);
 }

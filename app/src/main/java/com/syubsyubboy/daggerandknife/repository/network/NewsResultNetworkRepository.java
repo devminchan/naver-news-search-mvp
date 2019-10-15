@@ -8,6 +8,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class NewsResultNetworkRepository implements NewsResultRepository {
 
@@ -19,9 +21,11 @@ public class NewsResultNetworkRepository implements NewsResultRepository {
     }
 
     @Override
-    public Flowable<List<NewsResult>> getArticles(String query) {
+    public Flowable<List<NewsResult>> getNews(String query) {
         return naverSearchAPIService
                 .search(NaverAPIInfo.CLIENT_ID, NaverAPIInfo.CLIENT_SECRET, query, 100)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .toFlowable()
                 .map(SearchNewsResponse::getItems);
     }
