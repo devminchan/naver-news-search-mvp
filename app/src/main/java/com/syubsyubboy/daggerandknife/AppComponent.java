@@ -7,19 +7,18 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.AndroidInjectionModule;
 
 @Singleton
-@Component(modules = {AppModule.class})
+@Component(modules = {AppModule.class, AndroidInjectionModule.class})
 public interface AppComponent {
-    void inject(MainActivity mainActivity);
-
-    SharedPreferences getSharedPreferences();
+    void inject(MyApp app);
 
     @Component.Builder
     interface Builder {
         AppComponent build();
 
         @BindsInstance
-        Builder application(Application application);
+        Builder application(MyApp app);
     }
 }

@@ -10,35 +10,25 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dagger.Lazy;
-import dagger.android.DaggerActivity_MembersInjector;
+import dagger.android.AndroidInjection;
 
-public class MainActivity extends AppCompatActivity implements MainPresenter.View {
-
-    @Inject
-    SharedPreferences sharedPreferences;
+public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
 
     @BindView(R.id.textView)
     TextView textView;
     @BindView(R.id.button)
     Button button;
 
-    MainPresenter presenter;
+    @Inject
+    MainActivityContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        ((MyApp) getApplication()).getComponents().inject(this);
-
-        sharedPreferences.edit().putString("greeting", "hi").apply();
-
-        String greeting = sharedPreferences.getString("greeting", "fu");
-        textView.setText(greeting);
-
-        presenter = new MainPresenterImpl(this);
         presenter.initData();
     }
 
