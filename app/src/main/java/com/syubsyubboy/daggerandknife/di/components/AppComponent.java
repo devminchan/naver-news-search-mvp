@@ -1,9 +1,9 @@
-package com.syubsyubboy.daggerandknife.components;
+package com.syubsyubboy.daggerandknife.di.components;
 
-import com.syubsyubboy.daggerandknife.modules.ActivityModule;
+import com.syubsyubboy.daggerandknife.di.modules.ActivityModule;
 import com.syubsyubboy.daggerandknife.MyApp;
-import com.syubsyubboy.daggerandknife.modules.ApplicationModule;
-import com.syubsyubboy.daggerandknife.modules.MyAppModule;
+import com.syubsyubboy.daggerandknife.di.modules.ApplicationModule;
+import com.syubsyubboy.daggerandknife.di.modules.MyAppModule;
 
 import javax.inject.Singleton;
 

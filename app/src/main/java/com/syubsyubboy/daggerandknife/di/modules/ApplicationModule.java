@@ -1,4 +1,4 @@
-package com.syubsyubboy.daggerandknife.modules;
+package com.syubsyubboy.daggerandknife.di.modules;
 
 import android.app.Application;
 import android.content.SharedPreferences;
@@ -6,7 +6,6 @@ import android.preference.PreferenceManager;
 
 import javax.inject.Singleton;
 
-import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 

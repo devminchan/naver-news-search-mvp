@@ -9,8 +9,8 @@ public class MainActivityPresenterImpl extends MainActivityContract.Presenter {
     SharedPreferences sharedPreferences;
 
     @Inject
-    public MainActivityPresenterImpl(MainActivityContract.View v, SharedPreferences pref) {
-        super(v);
+    public MainActivityPresenterImpl(MainActivityContract.View view, SharedPreferences pref) {
+        super(view);
         this.sharedPreferences = pref;
     }
 

@@ -3,7 +3,7 @@ package com.syubsyubboy.daggerandknife;
 import android.app.Activity;
 import android.app.Application;
 
-import com.syubsyubboy.daggerandknife.components.DaggerAppComponent;
+import com.syubsyubboy.daggerandknife.di.components.DaggerAppComponent;
 
 import javax.inject.Inject;
 

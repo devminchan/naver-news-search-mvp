@@ -1,8 +1,8 @@
-package com.syubsyubboy.daggerandknife.modules;
+package com.syubsyubboy.daggerandknife.di.modules;
 
 import android.app.Activity;
 
-import com.syubsyubboy.daggerandknife.components.MainComponent;
+import com.syubsyubboy.daggerandknife.di.components.MainComponent;
 import com.syubsyubboy.daggerandknife.presentation.MainActivity;
 
 import dagger.Binds;

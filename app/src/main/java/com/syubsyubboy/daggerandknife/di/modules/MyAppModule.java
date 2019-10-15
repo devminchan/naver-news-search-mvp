@@ -1,4 +1,4 @@
-package com.syubsyubboy.daggerandknife.modules;
+package com.syubsyubboy.daggerandknife.di.modules;
 
 import android.app.Application;
 

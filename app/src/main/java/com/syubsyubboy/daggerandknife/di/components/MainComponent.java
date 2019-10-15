@@ -1,8 +1,8 @@
-package com.syubsyubboy.daggerandknife.components;
+package com.syubsyubboy.daggerandknife.di.components;
 
-import com.syubsyubboy.daggerandknife.modules.MainModule;
+import com.syubsyubboy.daggerandknife.di.modules.MainModule;
 import com.syubsyubboy.daggerandknife.presentation.MainActivity;
-import com.syubsyubboy.daggerandknife.scope.ActivityScoped;
+import com.syubsyubboy.daggerandknife.di.scope.ActivityScoped;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;

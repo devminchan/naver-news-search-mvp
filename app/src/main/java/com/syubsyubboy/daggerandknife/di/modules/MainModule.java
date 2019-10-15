@@ -1,9 +1,9 @@
-package com.syubsyubboy.daggerandknife.modules;
+package com.syubsyubboy.daggerandknife.di.modules;
 
 import com.syubsyubboy.daggerandknife.contracts.MainActivityContract;
 import com.syubsyubboy.daggerandknife.contracts.MainActivityPresenterImpl;
 import com.syubsyubboy.daggerandknife.presentation.MainActivity;
-import com.syubsyubboy.daggerandknife.scope.ActivityScoped;
+import com.syubsyubboy.daggerandknife.di.scope.ActivityScoped;
 
 import dagger.Binds;
 import dagger.Module;
