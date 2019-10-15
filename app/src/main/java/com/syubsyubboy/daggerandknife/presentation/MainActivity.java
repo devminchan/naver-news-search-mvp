@@ -1,10 +1,12 @@
-package com.syubsyubboy.daggerandknife;
+package com.syubsyubboy.daggerandknife.presentation;
 
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.syubsyubboy.daggerandknife.contracts.MainActivityContract;
+import com.syubsyubboy.daggerandknife.R;
 
 import javax.inject.Inject;
 
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
-    public void setItemData(String data) {
+    public void onDataChanged(String data) {
         textView.setText(data);
     }
 }

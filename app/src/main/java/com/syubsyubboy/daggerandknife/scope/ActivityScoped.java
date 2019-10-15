@@ -1,4 +1,4 @@
-package com.syubsyubboy.daggerandknife;
+package com.syubsyubboy.daggerandknife.scope;
 
 import javax.inject.Scope;
 

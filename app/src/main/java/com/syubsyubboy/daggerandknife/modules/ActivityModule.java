@@ -1,11 +1,9 @@
-package com.syubsyubboy.daggerandknife;
+package com.syubsyubboy.daggerandknife.modules;
 
 import android.app.Activity;
-import android.app.Application;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
-import javax.inject.Singleton;
+import com.syubsyubboy.daggerandknife.components.MainComponent;
+import com.syubsyubboy.daggerandknife.presentation.MainActivity;
 
 import dagger.Binds;
 import dagger.Module;
@@ -14,7 +12,7 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 
 @Module(subcomponents = MainComponent.class)
-public abstract class AppModule {
+public abstract class ActivityModule {
 
     @Binds
     @IntoMap

@@ -1,8 +1,8 @@
-package com.syubsyubboy.daggerandknife;
+package com.syubsyubboy.daggerandknife.contracts;
 
 import android.support.annotation.NonNull;
 
-interface MainActivityContract {
+public interface MainActivityContract {
     abstract class Presenter {
 
         protected View view;
@@ -17,9 +17,10 @@ interface MainActivityContract {
 
         public abstract void initData();
 
+        public abstract void setData(String data);
     }
 
     interface View {
-        void setItemData(String data);
+        void onDataChanged(String data);
     }
 }
