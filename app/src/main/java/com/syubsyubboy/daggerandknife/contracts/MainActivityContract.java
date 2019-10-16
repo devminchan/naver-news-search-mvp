@@ -13,8 +13,9 @@ public interface MainActivityContract {
         protected View view;
         protected NewsResultRepository repository;
 
-        public Presenter(View view) {
+        public Presenter(@NonNull View view, NewsResultRepository repository) {
             this.view = view;
+            this.repository = repository;
         }
 
         public abstract void searchNews(String query);

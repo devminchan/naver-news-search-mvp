@@ -1,12 +1,10 @@
 package com.syubsyubboy.daggerandknife.di.modules;
 
-import com.syubsyubboy.daggerandknife.repository.NewsResultRepository;
 import com.syubsyubboy.daggerandknife.repository.network.NaverSearchAPIService;
 import com.syubsyubboy.daggerandknife.repository.network.NewsResultNetworkRepository;
 
 import javax.inject.Singleton;
 
-import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 

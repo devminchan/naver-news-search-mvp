@@ -16,17 +16,14 @@ public class MainActivityPresenterImpl extends MainActivityContract.Presenter {
 
     private final String TAG = "MainActivityPresenter";
 
-    NewsResultRepository resultRepository;
-
     @Inject
     public MainActivityPresenterImpl(MainActivityContract.View view, NewsResultRepository repository) {
-        super(view);
-        this.resultRepository = repository;
+        super(view, repository);
     }
 
     @Override
     public void searchNews(String query) {
-        resultRepository.getNews(query)
+        repository.getNews(query)
                 .subscribe(view::onNewsResultUpdated,
                         throwable -> {
                             Log.e(TAG, throwable.toString());

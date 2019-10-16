@@ -4,8 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.widget.Button;
-import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import com.syubsyubboy.daggerandknife.contracts.MainActivityContract;
 import com.syubsyubboy.daggerandknife.R;
@@ -24,13 +24,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Inject
     MainActivityContract.Presenter presenter;
-
     SearchResultAdapter adapter;
-
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
-
-    @BindView(R.id.search_view)
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     SearchView searchView;
 
     @Override
@@ -39,14 +37,26 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ButterKnife.bind(this);
         initComponents();
+        initAdaptersAndListeners();
     }
 
     private void initComponents() {
-        adapter = new SearchResultAdapter(this);
-        recyclerView.setAdapter(adapter);
+        // findViewById 대체
+        ButterKnife.bind(this);
+        initActionBar();
+    }
 
+    private void initActionBar() {
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activity_main, menu);
+
+        searchView = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
+        searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -59,8 +69,14 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                 return false;
             }
         });
+
+        return true;
     }
 
+    private void initAdaptersAndListeners() {
+        adapter = new SearchResultAdapter(this);
+        recyclerView.setAdapter(adapter);
+    }
 
     @Override
     public void onNewsResultUpdated(List<NewsResult> results) {

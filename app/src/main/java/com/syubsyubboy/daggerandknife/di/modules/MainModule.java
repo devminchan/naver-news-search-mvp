@@ -20,10 +20,6 @@ import dagger.Provides;
 public abstract class MainModule {
     @ActivityScoped
     @Binds
-    abstract Context bindContext(MainActivity activity);
-
-    @ActivityScoped
-    @Binds
     abstract MainActivityContract.View bindView(MainActivity activity);
 
     @ActivityScoped
