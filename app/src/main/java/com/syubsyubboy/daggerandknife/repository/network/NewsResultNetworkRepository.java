@@ -26,7 +26,19 @@ public class NewsResultNetworkRepository implements NewsResultRepository {
                 .search(NaverAPIInfo.CLIENT_ID, NaverAPIInfo.CLIENT_SECRET, query, 100)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .map(SearchNewsResponse::getItems)
                 .toFlowable()
-                .map(SearchNewsResponse::getItems);
+                .flatMapIterable(items -> items)
+                .map(item -> {
+                    String result = item.getTitle()
+                            .replace("&quot;", "")
+                            .replace("<b>", "")
+                            .replace("</b>", "");
+
+                    item.setTitle(result);
+                    return item;
+                })
+                .toList()
+                .toFlowable();
     }
 }

@@ -8,20 +8,19 @@ import com.syubsyubboy.daggerandknife.repository.NewsResultRepository;
 import java.util.List;
 
 public interface MainActivityContract {
-    abstract class Presenter {
+    abstract class Presenter extends BasePresenter<View> {
 
-        protected View view;
         protected NewsResultRepository repository;
 
         public Presenter(@NonNull View view, NewsResultRepository repository) {
-            this.view = view;
+            super(view);
             this.repository = repository;
         }
 
         public abstract void searchNews(String query);
     }
 
-    interface View {
+    interface View extends BaseView {
         void onNewsResultUpdated(List<NewsResult> results);
     }
 }

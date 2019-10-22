@@ -1,16 +1,10 @@
 package com.syubsyubboy.daggerandknife.contracts;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.syubsyubboy.daggerandknife.entities.NewsResult;
 import com.syubsyubboy.daggerandknife.repository.NewsResultRepository;
 
-import java.util.List;
-
 import javax.inject.Inject;
-
-import io.reactivex.functions.Consumer;
 
 public class MainActivityPresenterImpl extends MainActivityContract.Presenter {
 
@@ -23,13 +17,13 @@ public class MainActivityPresenterImpl extends MainActivityContract.Presenter {
 
     @Override
     public void searchNews(String query) {
-        repository.getNews(query)
-                .subscribe(view::onNewsResultUpdated,
+        addDisposable(repository.getNews(query)
+                .subscribe(this.view::onNewsResultUpdated,
                         throwable -> {
                             Log.e(TAG, throwable.toString());
                         }, () -> {
                             Log.d(TAG, "Complete search news task");
-                        });
+                        }));
     }
 
 }

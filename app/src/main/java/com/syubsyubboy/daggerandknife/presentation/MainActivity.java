@@ -83,4 +83,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         adapter.setItemList(results);
         adapter.notifyDataSetChanged();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.dispose();
+    }
 }
